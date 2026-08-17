@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 
-const NAV_LEFT = [
+const NAV = [
   { label: "Games & Quizzes", to: "/games" },
   { label: "Word of the Day", to: "/wotd" },
-];
-const NAV_RIGHT = [
   { label: "Grammar", to: "/grammar" },
   { label: "Slang", to: "/slang" },
 ];
@@ -12,20 +10,12 @@ const NAV_RIGHT = [
 function Header() {
   return (
     <header className="header">
-      <nav className="nav nav-left">
-        {NAV_LEFT.map(({ label, to }) => (
-          <Link key={label} to={to} className="nav-link">
-            {label}
-          </Link>
-        ))}
-      </nav>
-
       <Link to="/" aria-label="Go to home" className="logo-link">
         <img src="/jru-logo.png" alt="JRU Logo" className="logo" />
       </Link>
 
-      <nav className="nav nav-right">
-        {NAV_RIGHT.map(({ label, to }) => (
+      <nav className="nav">
+        {NAV.map(({ label, to }) => (
           <Link key={label} to={to} className="nav-link">
             {label}
           </Link>

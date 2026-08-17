@@ -39,6 +39,8 @@ height: 18px;
   height: 66px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 24px;
   padding: 0 46px;
 }
 
@@ -47,17 +49,6 @@ height: 18px;
   align-items: center;
   gap: 18px;
   z-index: 1;
-}
-
-.nav-left {
-  flex: 1;
-  justify-content: flex-start;
-}
-
-.nav-right {
-  flex: 1;
-  justify-content: flex-end;
-  padding-right: 58px;
 }
 
 .nav-link {
@@ -107,10 +98,8 @@ height: 18px;
 }
 
 .logo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: static;
+  transform: none;
   width: 58px;
   height: 56px;
 }
@@ -291,7 +280,7 @@ height: 18px;
 
 .games-header {
   position: static;
-  gap: 12px;
+  gap: 20px;
 }
 
 .logo-inline {
@@ -300,6 +289,18 @@ height: 18px;
   width: 58px;
   height: 56px;
   flex-shrink: 0;
+  animation: rollIn 0.6s ease both;
+}
+
+@keyframes rollIn {
+  from {
+    opacity: 0;
+    transform: translateX(-45px) rotate(-120deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .header-search {
@@ -343,9 +344,7 @@ height: 18px;
 }
 
 .nav-inline {
-  flex: 1;
   justify-content: flex-end;
-  padding-right: 58px;
 }
 
 .nav-link-active {
