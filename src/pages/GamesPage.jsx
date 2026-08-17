@@ -34,7 +34,7 @@ function pickAnswer() {
 
 function evaluateGuess(guess, answer) {
   const result = Array(WORD_LENGTH).fill('absent')
-  const answerChars = answer.split('')
+  const answerChars = answer.toUpperCase().split('')
   const used = Array(WORD_LENGTH).fill(false)
 
   guess.split('').forEach((char, i) => {
@@ -100,7 +100,7 @@ function GamesPage() {
       })
       setKeyStates(updatedKeys)
 
-      if (guess === answer) {
+      if (guess === answer.toUpperCase()) {
         setGameOver(true)
         setMessage('You guessed it!')
       } else if (newGuesses.length >= MAX_ATTEMPTS) {
@@ -153,11 +153,15 @@ function GamesPage() {
         } else if (isCurrentRow && current[c]) {
           letter = current[c]
         }
+        const hasFeedback = state === 'correct' || state === 'present' || state === 'absent'
         cells.push(
           <div
             key={c}
             className={`tile tile-${state}${isCurrentRow ? ' tile-current' : ''}`}
-            style={{ backgroundColor: TILE_COLORS[state] }}
+            style={{
+              backgroundColor: TILE_COLORS[state],
+              animationDelay: hasFeedback ? `${c * 0.15}s` : undefined,
+            }}
           >
             {letter}
           </div>,
